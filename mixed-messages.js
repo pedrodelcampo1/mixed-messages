@@ -29,16 +29,20 @@ let fullText = `“All our dreams can come true, if we have the courage to pursu
 “Hold the vision, trust the process.” – Unknown
 “Don’t be afraid to give up the good to go for the great.” – John D. Rockefeller
 “People who wonder if the glass is half empty or full miss the point. The glass is refillable.” – Unknown`;
-let splittedQuotesByLineBreak = fullText.split("\n");
+let splittedQuotesByLineBreak = fullText.split("\n"); // splits te texts by each linebreak
 let authors = [];
 let phrases = [];
 let quotes = [];
 splittedQuotesByLineBreak.forEach((element) => {
-  let quoteAndAuthor = element.split("– ");
+  let quoteAndAuthor = element.split("– "); // splits each quote from the author
   console.log(quoteAndAuthor);
   let author = quoteAndAuthor[1];
   let quote = quoteAndAuthor[0];
   let quotesSplitByCommas = quote.split(", ");
+  /* splits each quote in phrases by using full stops, commas and semicolons as separators. 
+ I couldn' figure make it with only one function, had to nest them.
+ After splitting them, it pushes every phrase into an array of phrases.
+ */
   quotesSplitByCommas.forEach((element1) => {
     let quotesSplitByCommasAndSemicolons = element1.split("; ");
     quotesSplitByCommasAndSemicolons.forEach((element2) => {
