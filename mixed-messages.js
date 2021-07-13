@@ -47,7 +47,12 @@ splittedQuotesByLineBreak.forEach((element) => {
     quotesSplitByCommasAndSemicolons.forEach((element2) => {
       let phrase = element2.split(". ");
       for (i = 0; i < phrase.length || typeof phrase === "array"; i++) {
-        let addPhraseToList = phrases.push(phrase[i]);
+        let lowercasedPhrase = phrase[i].toLowerCase();
+        let phraseWithoutQuoteSigns = lowercasedPhrase
+          .replace(`”`, "")
+          .replace(`“`, "")
+          .replace(`.`, "");
+        let addPhraseToList = phrases.push(phraseWithoutQuoteSigns);
       }
     });
   });
@@ -59,7 +64,13 @@ function generateRandomQuote() {
   let randomNumber2 = Math.floor(Math.random() * phrases.length);
   let randomNumber3 = Math.floor(Math.random() * phrases.length);
   let randomNumberAuthor = Math.floor(Math.random() * authors.length);
-  let finalQuote = `${phrases[randomNumber1]}, ${phrases[randomNumber2]}, ${phrases[randomNumber3]} – ${authors[randomNumberAuthor]}`;
+  let firstPhrase = phrases[randomNumber1];
+  const firstPhraseUppercased =
+    firstPhrase.charAt(0).toUpperCase() + firstPhrase.slice(1);
+  console.log(firstPhraseUppercased);
+  let finalQuote = `"${firstPhraseUppercased}, ${phrases[randomNumber2]}, ${phrases[randomNumber3]}." – ${authors[randomNumberAuthor]}`;
   return finalQuote;
 }
-console.log(generateRandomQuote());
+let randomQuote = generateRandomQuote();
+console.log(randomQuote);
+alert(randomQuote);
