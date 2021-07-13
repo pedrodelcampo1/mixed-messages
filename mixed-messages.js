@@ -35,7 +35,6 @@ let phrases = [];
 let quotes = [];
 splittedQuotesByLineBreak.forEach((element) => {
   let quoteAndAuthor = element.split("– "); // splits each quote from the author
-  console.log(quoteAndAuthor);
   let author = quoteAndAuthor[1];
   let quote = quoteAndAuthor[0];
   let quotesSplitByCommas = quote.split(", ");
@@ -47,7 +46,6 @@ splittedQuotesByLineBreak.forEach((element) => {
     let quotesSplitByCommasAndSemicolons = element1.split("; ");
     quotesSplitByCommasAndSemicolons.forEach((element2) => {
       let phrase = element2.split(". ");
-      console.log(phrase);
       for (i = 0; i < phrase.length || typeof phrase === "array"; i++) {
         let addPhraseToList = phrases.push(phrase[i]);
       }
@@ -56,5 +54,12 @@ splittedQuotesByLineBreak.forEach((element) => {
   let addAuthorToList = authors.push(author);
   let addQuoteToList = quotes.push(quote);
 });
-console.log(phrases);
-console.log(authors);
+function generateRandomQuote() {
+  let randomNumber1 = Math.floor(Math.random() * phrases.length);
+  let randomNumber2 = Math.floor(Math.random() * phrases.length);
+  let randomNumber3 = Math.floor(Math.random() * phrases.length);
+  let randomNumberAuthor = Math.floor(Math.random() * authors.length);
+  let finalQuote = `${phrases[randomNumber1]}, ${phrases[randomNumber2]}, ${phrases[randomNumber3]} – ${authors[randomNumberAuthor]}`;
+  return finalQuote;
+}
+console.log(generateRandomQuote());
