@@ -1,4 +1,3 @@
-console.log("Hello World!");
 let fullText = `“All our dreams can come true, if we have the courage to pursue them.” – Walt Disney
 “The secret of getting ahead is getting started.” – Mark Twain
 “I’ve missed more than 9,000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life and that is why I succeed.” – Michael Jordan
@@ -30,19 +29,28 @@ let fullText = `“All our dreams can come true, if we have the courage to pursu
 “Hold the vision, trust the process.” – Unknown
 “Don’t be afraid to give up the good to go for the great.” – John D. Rockefeller
 “People who wonder if the glass is half empty or full miss the point. The glass is refillable.” – Unknown`;
-let splittedQuotes = fullText.split("\n");
-console.log(splittedQuotes);
+let splittedQuotesByLineBreak = fullText.split("\n");
 let authors = [];
 let phrases = [];
-splittedQuotes.forEach((element) => {
+let quotes = [];
+splittedQuotesByLineBreak.forEach((element) => {
   let quoteAndAuthor = element.split("– ");
   console.log(quoteAndAuthor);
   let author = quoteAndAuthor[1];
   let quote = quoteAndAuthor[0];
-  let phrase = quote.split("[,.;]+");
-  console.log(phrase);
-  let agregaAutorALaLista = authors.push(author);
-  let agregaPhraseALaLista = phrases.push(phrase);
+  let quotesSplitByCommas = quote.split(", ");
+  quotesSplitByCommas.forEach((element1) => {
+    let quotesSplitByCommasAndSemicolons = element1.split("; ");
+    quotesSplitByCommasAndSemicolons.forEach((element2) => {
+      let phrase = element2.split(". ");
+      console.log(phrase);
+      for (i = 0; i < phrase.length || typeof phrase === "array"; i++) {
+        let addPhraseToList = phrases.push(phrase[i]);
+      }
+    });
+  });
+  let addAuthorToList = authors.push(author);
+  let addQuoteToList = quotes.push(quote);
 });
 console.log(phrases);
 console.log(authors);
