@@ -6,3 +6,5 @@ It is a part of my career as a Full Stack Software Engineer in Codecademy.
 - Javascript
 - HTML (although I couldn't display the console on the browser)
 - Node.js
+## Setup
+You can run the HTML file in any browser.
