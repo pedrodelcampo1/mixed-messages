@@ -423,7 +423,6 @@ let phrases = [];
 let quotes = [];
 splittedQuotesByLineBreak.forEach((element) => {
   if (element[0] === `“`) {
-    console.log(element);
     let quoteAndAuthor = element.split("– "); // splits each quote from the author
     let author = quoteAndAuthor[1];
     let quote = quoteAndAuthor[0];
@@ -458,7 +457,6 @@ function generateRandomQuote() {
   let firstPhrase = phrases[randomNumber1];
   const firstPhraseUppercased =
     firstPhrase.charAt(0).toUpperCase() + firstPhrase.slice(1);
-  console.log(firstPhraseUppercased);
   let finalQuote = `"${firstPhraseUppercased}, ${phrases[randomNumber2]}, ${phrases[randomNumber3]}." – ${authors[randomNumberAuthor]}`;
   finalQuote = finalQuote.replace(` ,`, `,`).replace(` .`, `.`);
   return finalQuote;
